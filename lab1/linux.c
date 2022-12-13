@@ -4,7 +4,6 @@
 
 int main(){
     char line[1024];
-    int lenght;
     if (isatty(1)){
         if (isatty(0)){
             write(1, "Write something: \n", strlen("Write something: \n"));
@@ -21,9 +20,8 @@ int main(){
     else{
         if (isatty(0)){
             write(2,"Write something: \n",strlen("Write something: \n"));
-            lenght=read(0,line,1024);
             write(1, "Readed\n", strlen("Readed\n"));
-            write(1,line,lenght);
+            write(1,line,strlen(line));
         }
         else{
             fgets(line, 1024, stdin);
