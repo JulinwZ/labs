@@ -14,6 +14,6 @@ int main(){
 
     ReadFile(hin, line, 100, NULL, NULL);
 
-    printf("Readed: \n");
+    WriteFile(hout, "Readed: \n", strlen("Readed: \n"), NULL, NULL);
     WriteFile(hout, line, strlen(line), NULL, NULL);
 }
