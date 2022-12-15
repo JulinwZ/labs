@@ -25,11 +25,17 @@ int main(){
     if (GetLastError() == 2){
         GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &screen);
         SetPosition(screen.srWindow.Right / 2, screen.srWindow.Bottom / 2);
+
         printf("File is not exist!");
+
         printf("\nPress enter");
+
         ReadFile(hin, line, 100, NULL, NULL);
+
         system("CLS");
+
         SetPosition(0, 0);
+        
         exit(1);
     }
     CloseHandle(opening);
@@ -40,35 +46,57 @@ int main(){
         while(GetLastError() == 32){
             SetConsoleTextAttribute(hout,FOREGROUND_GREEN);
             GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &screen);
+
             SetPosition(screen.srWindow.Right / 2 - 6, screen.srWindow.Bottom / 2 - 1);
+
             printf("Unsuccessful opening");
+
             SetPosition(screen.srWindow.Right / 2 - 16, screen.srWindow.Bottom / 2 + 1);
+
             printf("because the file is in use by another program.\n");
+
             sleep(2);
+
             system("CLS");
+
             fhandle = CreateFile("text.txt", GENERIC_READ, 0, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
         }
+
         system("CLS");
+
         GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &screen);
         SetPosition(screen.srWindow.Right / 2 - 6, screen.srWindow.Bottom / 2 - 1);
+
         printf("Successful opening!\n");
+
         ReadFile(fhandle, line, 100, NULL, NULL);
         WriteFile(hout, line, 100, NULL, NULL);
+
         printf("\nPress enter");
+
         ReadFile(hin, line, 100, NULL, NULL);
+
         system("CLS");
+
         exit(1);
     }
     else{
         GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &screen);
         SetPosition(screen.srWindow.Right / 2 - 6, screen.srWindow.Bottom / 2 - 1);
+
         printf("Successful opening!\n");
-        ReadFile(fhandle, line, 100, NULL, NULL);
+
         SetPosition(screen.srWindow.Right / 2 - strlen(line) / 2, screen.srWindow.Bottom / 2);
+
+        ReadFile(fhandle, line, 100, NULL, NULL);
         WriteFile(hout, line, 100, NULL, NULL);
+
         printf("\nPress enter");
+
         ReadFile(hin, line, 100, NULL, NULL);
+
         system("CLS");
+
         exit(1);
     }
     
