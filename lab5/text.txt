@@ -1,0 +1,1 @@
+This function uses either Unicode characters or 8-bit characters from the console's current code page
